@@ -3,21 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>無料診断｜日本史型性格診断</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Noto Sans JP",
+                sans-serif;
+            background: #f5f1e8;
+            color: #222;
+        }
+
+        .container {
+            max-width: 480px;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 40px 24px;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .label {
+            font-size: 13px;
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+            color: #666;
+        }
+
+        h1 {
+            font-size: 32px;
+            line-height: 1.5;
+            margin: 0 0 24px;
+        }
+
+        .lead {
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 18px 20px;
+
+            background: #222;
+            color: #fff;
+
+            border-radius: 8px;
+
+            text-align: center;
+            text-decoration: none;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            box-sizing: border-box;
+        }
+
+        .note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>無料診断</h1>
+    <main class="container">
 
-    <p>
-        ここから、あなたの診断が始まります。
-    </p>
+        <div class="label">
+            JAPANESE PERSONALITY DIAGNOSIS
+        </div>
 
-    <p>
-        生年月日といくつかの質問から、
-        あなたの「世界への影響力」を読み解きます。
-    </p>
+        <h1>
+            あなたの「原点」を<br>
+            読み解きます。
+        </h1>
+
+        <p class="lead">
+            生年月日からあなたの原点を読み解き、
+            いくつかの質問から、
+            今のあなたが世界に与えられる
+            影響力を見つけます。
+        </p>
+
+        <a href="questions.html" class="button">
+            診断をはじめる
+        </a>
+
+        <p class="note">
+            所要時間：約3〜5分
+        </p>
+
+    </main>
 
 </body>
 </html>
