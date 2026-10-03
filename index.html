@@ -1,18 +1,78 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本史型性格診断</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あなたの原点診断</title>
+<style>
+  body{font-family:sans-serif;max-width:480px;margin:0 auto;padding:20px;line-height:1.7}
+  label{display:block;margin-top:16px;font-weight:bold}
+  input,select,button{width:100%;padding:12px;font-size:16px;margin-top:6px;box-sizing:border-box}
+  button{background:#2563eb;color:#fff;border:0;border-radius:8px;margin-top:24px}
+  #result{display:none;margin-top:24px;padding:16px;background:#f3f4f6;border-radius:8px}
+</style>
 </head>
-
 <body>
+<h1>あなたの原点診断</h1>
 
-    <h1>あなたは、世界に<br>どんな影響を与える人？</h1>
+<label>生年月日</label>
+<input type="date" id="birth">
 
-    <p>日本史型性格診断</p>
+<label>Q1. 新しいことを始めるとき</label>
+<select id="q1">
+  <option value="1">まず調べてから動く</option>
+  <option value="2">とりあえず動いてみる</option>
+  <option value="3">誰かに相談してから動く</option>
+</select>
 
-    <button>無料診断をはじめる</button>
+<label>Q2. 疲れたとき</label>
+<select id="q2">
+  <option value="1">一人で静かに過ごす</option>
+  <option value="2">誰かと話す</option>
+  <option value="3">体を動かす</option>
+</select>
 
+<button onclick="diagnose()">診断する</button>
+
+<div id="result">
+  <h2>あなたの原点</h2><p id="origin"></p>
+  <h2>現在の行動傾向</h2><p id="trend"></p>
+  <a id="share" target="_blank">Xで共有する</a><br>
+  <a href="https://note.com/" target="_blank">▶ 詳細レポートを見る（有料）</a>
+</div>
+
+<script>
+const origins={
+ 1:"道をひらく開拓者タイプ。自分で決めて進むことで力が出ます。",
+ 2:"人を支える調整役タイプ。周りとの関係の中で力を発揮します。",
+ 3:"形にする創造者タイプ。アイデアを表現することで満たされます。",
+ 4:"土台を築く職人タイプ。着実な積み重ねが強みです。",
+ 5:"変化を楽しむ冒険者タイプ。自由と刺激が原動力です。",
+ 6:"人を育てる守り手タイプ。誰かの役に立つほど輝きます。",
+ 7:"探究する分析者タイプ。深く考えることで答えを見つけます。",
+ 8:"成果を出す実行者タイプ。目標があるほど力が出ます。",
+ 9:"全体を見渡す理想家タイプ。大きな視点で物事をとらえます。"
+};
+const trends={
+ 2:"慎重に準備してから動く時期です。",
+ 3:"動きながら考える時期です。",
+ 4:"人との対話で答えが見える時期です。",
+ 5:"一人の時間で整える時期です。",
+ 6:"行動力が高まっている時期です。"
+};
+function reduce(n){while(n>9){n=String(n).split("").reduce((a,b)=>a+ +b,0)}return n}
+function diagnose(){
+  const b=document.getElementById("birth").value;
+  if(!b){alert("生年月日を入力してください");return}
+  const digits=b.replace(/-/g,"").split("").reduce((a,c)=>a+ +c,0);
+  const type=reduce(digits);
+  const score=+document.getElementById("q1").value + +document.getElementById("q2").value;
+  document.getElementById("origin").textContent=origins[type];
+  document.getElementById("trend").textContent=trends[score];
+  const text=encodeURIComponent("私の原点は「"+origins[type].split("。")[0]+"」でした！");
+  document.getElementById("share").href="https://twitter.com/intent/tweet?text="+text+"&url="+encodeURIComponent(location.href);
+  document.getElementById("result").style.display="block";
+}
+</script>
 </body>
 </html>
